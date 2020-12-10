@@ -1,6 +1,7 @@
 # ESIN
-regional database for hospitals
+
 Base de dados regional para hospitais
+
 Tendo em conta o crescimento exponencial de unidades hospitalares privadas e publicas surge a necessidade de partilhar os dados de diferentes utentes entre as unidades hospitalares, para tal pretende-se criar uma base de dados regional para facilitar a mobilidade médica dos utentes numa determinada região.
 O sistema ira contemplar todas as informações dos serviços prestados nas distintas unidades hospitalares, ficha médica de cada utente, médico de família, seguro ou plano de saúde. Uma vez que o objetivo principal desse sistema é permitir que haja interação entre diferentes unidades hospitalares de modo a dar uma resposta segura e rápida durante o atendimento para uma nova consulta ou emergência médica do utente, o sistema devera dispor dos seguintes requisitos:
 1.	Cada utente deve dispor de um ID pessoal, permitindo ter o acesso aos seus dados pessoais e clínicos como, nome, idade, número de telefone, morada. 
