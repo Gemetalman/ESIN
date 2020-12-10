@@ -15,3 +15,28 @@ O sistema ira contemplar todas as informações dos serviços prestados nas dist
 9.	Os dados clínicos do utente como, histórico das consultas já realizadas, receitas prescritas, medicações feitas e eventuais doenças crónicas podem ser partilhadas entre o médico e departamento administrativo hospitalar.
 10. Para emergências médicas, guardar a hora de entrada do paciente e a de saída. Atualizar os dados clínicos do utente com cuidados adicionais não urgentes.
 11. Um médico pode atender vários pacientes, tal como um paciente pode ser atendido por vários médicos.
+
+Modelo relacional
+Pessoa (id, nome, telefone)
+NOT NULL (nome)
+Utente (id -> Pessoa, dadosClinicos, idade, morada)
+NOT NULL (dadosClinicos, nome) 
+Hospital (id, nome, localidade, email)
+NOT NULL (nome, localidade)
+UNIQUE (email)
+Departamento (id, nome, hospital -> Hospital)
+NOT NULL (nome, hospital)
+Medico (id -> Pessoa, horario, departamento -> Departamento, hospital -> Hospital)
+NOT NULL (horario, departamento, hospital)
+Consulta (id -> Utente, departamento -> Departamento, data, hora)
+NOT NULL (data, hora)
+Emergencia (id, hospital -> Hospital, dataAdmissao, horaAdmissao, horaSaida, sala, tratamentosAdicionais)
+NOT NULL (hospital, dataAdmissao, horaAdmissao)
+CHECK (dataAdmissao < dataSaida)
+CHECK (horaAdmissao < horaSaida)
+Consultorio (id, piso, hospital -> Hospital)
+NOT NULL (piso, hospital)
+Especialidade (id, nome)
+NOT NULL (nome)
+UNIQUE (nome)
+
