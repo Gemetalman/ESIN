@@ -39,7 +39,7 @@ CREATE TABLE Utente(
 
 CREATE TABLE Medico(
     id int REFERENCES Pessoa PRIMARY KEY,
-    horario text NOT NULL, --??????????????????
+    horario text NOT NULL, --?????????????????
     departamento int references Departamento NOT NULL, 
     hospital int references Hospital NOT NULL,
     especialidade int references Especialidade NOT NULL,
