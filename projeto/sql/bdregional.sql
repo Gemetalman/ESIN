@@ -7,6 +7,17 @@ CREATE TABLE Hospital(
     email text UNIQUE,
 );
 
+CREATE TABLE Consultorio(
+    id int PRIMARY KEY,
+    piso int NOT NULL,
+    hospital int references Hospital NOT NULL,
+);
+
+CREATE TABLE Especialidade(
+    id int PRIMARY KEY,
+    nome text NOT NULL UNIQUE, 
+);
+
 CREATE TABLE Departamento(
     id int PRIMARY KEY AUTOINCREMENT,
     nome text NOT NULL NOT NULL,
@@ -31,6 +42,7 @@ CREATE TABLE Medico(
     horario text NOT NULL, --??????????????????
     departamento int references Departamento NOT NULL, 
     hospital int references Hospital NOT NULL,
+    especialidade int references Especialidade NOT NULL,
 );
 
 CREATE TABLE Emergencia(
@@ -40,17 +52,6 @@ CREATE TABLE Emergencia(
     horaAdmissao int NOT NULL,
     dataSaida int CHECK(dataSaida>dataAdmissao), -- check usado corretamente?
     horaSaida int CHECK(horaSaida>horaAdmissao), -- check usado corretamente?
-);
-
-CREATE TABLE Consultorio(
-    id int PRIMARY KEY,
-    piso int NOT NULL,
-    hospital int references Hospital NOT NULL,
-);
-
-CREATE TABLE Especialidade(
-    id int PRIMARY KEY,
-    nome text NOT NULL UNIQUE, 
 );
 
 CREATE TABLE Consulta( 
