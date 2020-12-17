@@ -33,13 +33,6 @@ CREATE TABLE Medico(
     hospital int references Hospital NOT NULL,
 );
 
-CREATE TABLE Consulta( 
-    id int references Utente PRIMARY KEY,
-    departamento int references Departamento PRIMARY KEY,
-    data text NOT NULL,  --??????????????????
-    hora text NOT NULL,  --??????????????????
-);
-
 CREATE TABLE Emergencia(
     id int PRIMARY KEY AUTOINCREMENT,
     hospital int references Hospital NOT NULL,
@@ -58,4 +51,12 @@ CREATE TABLE Consultorio(
 CREATE TABLE Especialidade(
     id int PRIMARY KEY,
     nome text NOT NULL UNIQUE, 
+);
+
+CREATE TABLE Consulta( 
+    id int PRIMARY KEY,
+    data text NOT NULL,  --??????????????????
+    hora text NOT NULL,  --??????????????????
+    consultorio int references Consultorio NOT NULL,
+    especialidade int references Especialidade NOT NULL,
 );
