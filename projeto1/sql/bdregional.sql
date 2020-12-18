@@ -25,8 +25,8 @@ email text UNIQUE
 );
 
 --insert some values
-INSERT INTO Hospital (id, nome, localidade, email) VALUES (1, 'Hospital1', 'Porto', 'Hospital1@gmail.com');
-INSERT INTO Hospital (id, nome, localidade, email) VALUES (2, 'Hospital2', 'Paranhos', 'Hospital2@gmail.com');
+INSERT INTO Hospital (id, nome, localidade, email) VALUES (1, 'HospitalA', 'Porto', 'Hospital1@gmail.com');
+INSERT INTO Hospital (id, nome, localidade, email) VALUES (2, 'HospitalB', 'Paranhos', 'Hospital2@gmail.com');
 
 
 -- delete the table
@@ -92,7 +92,7 @@ CREATE TABLE Consultorio(
 
 --insert some values
 INSERT INTO Consultorio (numero, piso, hospital) VALUES (2, 1, 'HospitalB');
-INSERT INTO  Consultorio (numero,piso, hospital) VALUES (4, 6, 'HospitalA');
+INSERT INTO  Consultorio (numero, piso, hospital) VALUES (4, 6, 'HospitalA');
 
 
 -- delete the table
