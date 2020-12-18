@@ -11,129 +11,103 @@ CREATE TABLE Utente (
 );
 -- insert some values
 INSERT INTO Utente (id, dadosClinicos, nome, telefone, morada) VALUES (1, 'dadosclinicos', 'Joao', 932021523, 'Porto');
---INSERT INTO Utente (id, nome, telefone, morada, dadosclinicos) VALUES (2, 'Maria', 912034567, Paranhos, dadosclinicos);
---INSERT INTO Utente (id, nome, telefone, morada, dadosclinicos) VALUES (3, 'Mafalda', 982730912, Vila nova de gaia, dadosClinicos);
---INSERT INTO Utente (id, nome, telefone, morada, dadosclinicos) VALUES (4, 'Rafael', 932730244, Matosinhos, dadosClinicos);
-
---get all tuples from table
+INSERT INTO Utente (id, dadosClinicos, nome, telefone, morada) VALUES (2, 'dadosclinicos', 'Maria', 912034567, 'Paranhos');
+INSERT INTO Utente (id, dadosClinicos, nome, telefone, morada) VALUES (3, 'dadosClinicos', 'Mafalda', 982730912, 'Vila nova de gaia');
 
 
 -- delete the table
 --drop table if exist Hospital
---CREATE TABLE Hospital(
---id int PRIMARY KEY autoincrement,
---nome text NOT NULL,
---localidade text NOT NULL,
---email text UNIQUE,
---);
+CREATE TABLE Hospital(
+id int PRIMARY KEY autoincrement,
+nome text NOT NULL,
+localidade text NOT NULL,
+email text UNIQUE
+);
 
 --insert some values
---INSERT INTO Hospital (id, nome, localidade, email) VALUES (1, 'Hospital1', Porto, Hospital1@gmail.com);
---INSERT INTO Hospital (id, nome, localidade, email) VALUES (2, 'Hospital2', Paranhos, Hospital2@gmail.com);
---INSERT INTO Hospital (id, nome, localidade, email) VALUES (3, 'Hospital3', Matosinhos, Hospital3@gmail.com);
---INSERT INTO Hospital (id, nome, localidade, email) VALUES (4, 'Hospital4', Vila nova de gaia, Hospital4@gmail.com);
-
---get all tuples from table
---Select * from Hospital;
+INSERT INTO Hospital (id, nome, localidade, email) VALUES (1, 'Hospital1', 'Porto', 'Hospital1@gmail.com');
+INSERT INTO Hospital (id, nome, localidade, email) VALUES (2, 'Hospital2', 'Paranhos', 'Hospital2@gmail.com');
 
 
 -- delete the table
 --drop table if exist Departamento
---CREATE TABLE Departamento(
---id int PRIMARY KEY,
---nome text NOT NULL NOT NULL,
---hospital  int references Hospital NOT NULL
---);
+CREATE TABLE Departamento(
+id int PRIMARY KEY,
+nome text NOT NULL NOT NULL,
+hospital  int references Hospital NOT NULL
+);
 
 
 --insert some values
---INSERT INTO Departamento (id, nome, hospital) VALUES (1, 'Departamento administrativo', Hospital1);
---INSERT INTO  Departamento (id, nome, hospital) VALUES (2,'Departamento administrativo', Hospital2);
---INSERT INTO  Departamento (id, nome, hospital) VALUES (3,'Departamento administrativo', Hospital3);
---INSERT INTO  Departamento (id, nome, hospital) VALUES (4,'Departamento administrativo', Hospital4);
-
---get all tuples from table
---Select * Departamento
+INSERT INTO Departamento (id, nome, hospital) VALUES (1, 'Departamento administrativo', 'HospitalA');
+INSERT INTO  Departamento (id, nome, hospital) VALUES (2,'Departamento administrativo', 'HospitalB');
 
 --delete the table
 --drop table if exist Medico
---CREATE TABLE Medico(
---id int PRIMARY KEY,
---nome text NOT NULL default 'Unknown Name',
---telefone TEXT, 
---horario text NOT NULL, 
---departamento int references Departamento,
---hospital int refererence);
+CREATE TABLE Medico(
+id int PRIMARY KEY,
+nome text NOT NULL default 'Unknown Name',
+telefone integer, 
+horario text NOT NULL, 
+hospital int references Hospital,
+especialidade int references Especialidade
+);
 
 --insert some values
---INSERT INTO  Medico (id, nome, telefone, horario, hospital) VALUES (1, 'Dr Antonio Jota', horario, Hospital4);
---INSERT INTO  Medico (id, nome, telefone, horario, hospital) VALUES (2, 'Dr Manuel Jorge', horario, Hospital1);
---INSERT INTO  Medico (id, nome, telefone, horario, hospital) VALUES (3, 'Dr Pedro Jeronimo', horario, Hospital2);
---INSERT INTO  Medico (id, nome, telefone, horario, hospital) VALUES (4, 'Dr Nataniel Dias', horario, Hospital3);
-
---get all tuples from table
---Select * Medico
-
+INSERT INTO  Medico (id, nome, telefone, horario, hospital, especialidade) VALUES (1, 'Dr Antonio Jota', 'horario', 'HospitalA', 'Dermatologia');
+INSERT INTO  Medico (id, nome, telefone, horario, hospital, especialidade) VALUES (2, 'Dr Manuel Jorge', 'horario', 'HospitalB', 'Oftamologia' );
 
 -- delete the table
 --drop table if exist Especialidade
---CREATE TABLE Especialidade(
-  --id integer PRIMARY KEY autoincrement, 
-  --nome text NOT NULL default 'Unknown Name',
---);
+CREATE TABLE Especialidade(
+id integer PRIMARY KEY autoincrement, 
+nome text NOT NULL default 'Unknown Name'
+);
 
 --insert some values
---INSERT INTO Especialidade (id, nome) VALUES (1, 'Dermatologia');
---INSERT INTO Especialidade (id, nome) VALUES (2, 'Oftamologia');
---INSERT INTO Especialidade (id, nome) VALUES (3, 'Estomatologia');
---INSERT INTO Especialidade (id, nome) VALUES (4, 'Nutrição');
-
---get all tuples from table
---Select * Especialidade
-
+INSERT INTO Especialidade (id, nome) VALUES (1, 'Dermatologia');
+INSERT INTO Especialidade (id, nome) VALUES (2, 'Oftamologia');
 
 -- delete the table
 --drop table if exist Consulta
---CREATE TABLE Consulta( 
---id int references Utente PRIMARY KEY,
---data TEXT NOT NULL
---hora TEXT NOT NULL
---);
+CREATE TABLE Consulta( 
+id int references Utente PRIMARY KEY,
+data integer NOT NULL,
+hora integer NOT NULL, 
+especialidade references Especialidade
+);
 
 --insert some values
---INSERT INTO consulta(id, data, hora,  VALUES (4,Departamento administrativo, Hospital4);
---INSERT INTO  Departamento (id, nome, hospital) VALUES (4,Departamento administrativo, Hospital4);
---INSERT INTO  Departamento (id, nome, hospital) VALUES (4,Departamento administrativo, Hospital4);
---INSERT INTO  Departamento (id, nome, hospital) VALUES (4,Departamento administrativo, Hospital4);
-
---get all tuples from table
---Select * Consulta
-
+INSERT INTO consulta (id, data, hora, especialidade) VALUES (1, 12/06/2020, 13:00, 'Dermatologia');
+INSERT INTO consulta (id, data, hora, especialidade) VALUES (4,30/12/2020,10:00, 'Oftamologia');
 
 
 -- delete the table
 --drop table if exist Consultorio
---CREATE TABLE Consultorio();
+CREATE TABLE Consultorio(
+  numero integer,
+  piso integer NOT NULL
+);
 
 --insert some values
---INSERT INTO  Departamento (id, nome, hospital) VALUES (4,Departamento administrativo, Hospital4);
---INSERT INTO  Departamento (id, nome, hospital) VALUES (4,Departamento administrativo, Hospital4);
---INSERT INTO  Departamento (id, nome, hospital) VALUES (4,Departamento administrativo, Hospital4);
---INSERT INTO  Departamento (id, nome, hospital) VALUES (4,Departamento administrativo, Hospital4);
-
---get all tuples from table
---Select * Consultorio
+INSERT INTO Consultorio (numero, piso) VALUES (2, 1);
+INSERT INTO  Consultorio (numero,piso) VALUES (4, 6);
 
 
 -- delete the table
 --drop table if exist Emergência
---CREATE TABLE Emergência();
+CREATE TABLE Emergência(
+  id integer PRIMARY KEY autoincrement,
+  dataAdmissao integer NOT NULL,
+  horaAdmissao integer NOT NULL,
+  dataSaida integer check,
+  horaSaida integer check,
+  sala text,
+  tratamentosAdicionais text
+
+);
 
 --insert some values
---INSERT INTO  Departamento (id, nome, hospital) VALUES (4,Departamento administrativo, Hospital4);
---INSERT INTO  Departamento (id, nome, hospital) VALUES (4,Departamento administrativo, Hospital4);
---INSERT INTO  Departamento (id, nome, hospital) VALUES (4,Departamento administrativo, Hospital4);
---INSERT INTO  Departamento (id, nome, hospital) VALUES (4,Departamento administrativo, Hospital4);
+INSERT INTO Emergência (id, dataAdmissao, horaAdmissao, dataSaida, horaSaida, sala, tratamentosAdicionais ) VALUES (1, 24/12/2020, 23:00, 25/12/2020, 10:00, 'Urgencia', 'Paracetamol');
+INSERT INTO Emergência (id, dataAdmissao, horaAdmissao, dataSaida, horaSaida, sala, tratamentosAdicionais) VALUES (2, 26/12/2020, 12:30, 26/12/2020, 20:00,'Urgencia', 'Cloroquina');
 
---get all tuples from table
---Select * Emergência
