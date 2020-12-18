@@ -86,7 +86,7 @@ INSERT INTO consulta (id, data, hora, especialidade) VALUES (4, 30-12-2020, '10:
 --drop table if exist Consultorio
 CREATE TABLE Consultorio(
   numero integer,
-  piso integer NOT NULL
+  piso NUMERIC NOT NULL
   hospital references Hospital NOT NULL
 );
 
