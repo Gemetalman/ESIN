@@ -78,8 +78,8 @@ especialidade references Especialidade
 );
 
 --insert some values
-INSERT INTO consulta (id, data, hora, especialidade) VALUES (1, 12/06/2020, 13:00, 'Dermatologia');
-INSERT INTO consulta (id, data, hora, especialidade) VALUES (4,30/12/2020,10:00, 'Oftamologia');
+INSERT INTO consulta (id, data, hora, especialidade) VALUES (1, 12-06-2020, '13:00 AM', 'Dermatologia');
+INSERT INTO consulta (id, data, hora, especialidade) VALUES (4, 30-12-2020, '10:00 AM', 'Oftamologia');
 
 
 -- delete the table
@@ -109,6 +109,6 @@ CREATE TABLE Emergência(
 );
 
 --insert some values
-INSERT INTO Emergência (id, dataAdmissao, horaAdmissao, dataSaida, horaSaida, sala, tratamentosAdicionais ) VALUES (1, 24/12/2020, 23:00, 25/12/2020, 10:00, 'Urgencia', 'Paracetamol');
-INSERT INTO Emergência (id, dataAdmissao, horaAdmissao, dataSaida, horaSaida, sala, tratamentosAdicionais) VALUES (2, 26/12/2020, 12:30, 26/12/2020, 20:00,'Urgencia', 'Cloroquina');
+INSERT INTO Emergência (id, dataAdmissao, horaAdmissao, dataSaida, horaSaida, sala, tratamentosAdicionais ) VALUES (1, 24-12-2020, '23:00 PM', 25-12-2020, '10:00 AM', 'Urgencia', 'Paracetamol');
+INSERT INTO Emergência (id, dataAdmissao, horaAdmissao, dataSaida, horaSaida, sala, tratamentosAdicionais) VALUES (2, 26-12-2020, '12:30 AM', 26-12-2020, '20:00 PM','Urgencia', 'Cloroquina');
 
