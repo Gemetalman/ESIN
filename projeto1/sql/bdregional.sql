@@ -1,22 +1,22 @@
-PRAGMA foreign_keys = ON;
+--PRAGMA foreign_keys = ON;
 -- delete the table
-  drop table if exist Utente;
+--drop table if exist Utente;
 -- create the table
-CREATE TABLE Utente(
+CREATE TABLE Utente (
     id integer PRIMARY KEY autoincrement, 
     dadosClinicos text NOT NULL, 
     nome text NOT NULL default 'Unknown Name',
-    telefone TEXT, 
-    morada text,
+    telefone integer, 
+    morada text
 );
 -- insert some values
-INSERT INTO Utente (id, nome, telefone, morada, dadosclinicos) VALUES (1, 'João', 932021523, Porto, dadosclinicos);
-INSERT INTO Utente (id, nome, telefone, morada, dadosclinicos) VALUES (2, 'Maria', 912034567, Paranhos, dadosclinicos);
-INSERT INTO Utente (id, nome, telefone, morada, dadosclinicos) VALUES (3, 'Mafalda', 982730912, Vila nova de gaia, dadosClinicos);
-INSERT INTO Utente (id, nome, telefone, morada, dadosclinicos) VALUES (4, 'Rafael', 932730244, Matosinhos, dadosClinicos);
+INSERT INTO Utente (id, dadosClinicos, nome, telefone, morada) VALUES (1, 'dadosclinicos', 'Joao', 932021523, 'Porto');
+--INSERT INTO Utente (id, nome, telefone, morada, dadosclinicos) VALUES (2, 'Maria', 912034567, Paranhos, dadosclinicos);
+--INSERT INTO Utente (id, nome, telefone, morada, dadosclinicos) VALUES (3, 'Mafalda', 982730912, Vila nova de gaia, dadosClinicos);
+--INSERT INTO Utente (id, nome, telefone, morada, dadosclinicos) VALUES (4, 'Rafael', 932730244, Matosinhos, dadosClinicos);
 
 --get all tuples from table
-Select * from Utente;
+
 
 -- delete the table
 --drop table if exist Hospital
@@ -137,4 +137,3 @@ Select * from Utente;
 
 --get all tuples from table
 --Select * Emergência
-
