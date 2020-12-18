@@ -61,7 +61,7 @@ INSERT INTO  Medico (id, nome, telefone, horario, hospital, especialidade) VALUE
 --drop table if exist Especialidade
 CREATE TABLE Especialidade(
 id integer PRIMARY KEY autoincrement, 
-nome text NOT NULL default 'Unknown Name'
+nome text NOT NULL UNIQUE
 );
 
 --insert some values
@@ -87,11 +87,12 @@ INSERT INTO consulta (id, data, hora, especialidade) VALUES (4,30/12/2020,10:00,
 CREATE TABLE Consultorio(
   numero integer,
   piso integer NOT NULL
+  hospital references Hospital NOT NULL
 );
 
 --insert some values
-INSERT INTO Consultorio (numero, piso) VALUES (2, 1);
-INSERT INTO  Consultorio (numero,piso) VALUES (4, 6);
+INSERT INTO Consultorio (numero, piso, hospital) VALUES (2, 1, 'HospitalB');
+INSERT INTO  Consultorio (numero,piso, hospital) VALUES (4, 6, 'HospitalA');
 
 
 -- delete the table
