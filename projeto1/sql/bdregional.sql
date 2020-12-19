@@ -72,14 +72,14 @@ INSERT INTO Especialidade (id, nome) VALUES (2, 'Oftamologia');
 --drop table if exist Consulta
 CREATE TABLE Consulta( 
 id int references Utente PRIMARY KEY,
-data integer NOT NULL,
-hora integer NOT NULL, 
+date text NOT NULL,
+hora text NOT NULL, 
 especialidade references Especialidade
 );
 
 --insert some values
-INSERT INTO consulta (id, data, hora, especialidade) VALUES (1, 12-06-2020, '13:00 AM', 'Dermatologia');
-INSERT INTO consulta (id, data, hora, especialidade) VALUES (4, 30-12-2020, '10:00 AM', 'Oftamologia');
+INSERT INTO consulta (id, date, hora, especialidade) VALUES (1, '12-06-2020', '13:00 AM', 'Dermatologia');
+INSERT INTO consulta (id, date, hora, especialidade) VALUES (4, '30-12-2020', '10:00 AM', 'Oftamologia');
 
 
 -- delete the table
@@ -97,18 +97,18 @@ INSERT INTO  Consultorio (numero, piso, hospital) VALUES (4, 6, 'HospitalA');
 
 -- delete the table
 --drop table if exist Emergência
-CREATE TABLE Emergência(
+CREATE TABLE Emergencia(
   id integer PRIMARY KEY autoincrement,
-  dataAdmissao integer NOT NULL,
-  horaAdmissao integer NOT NULL,
-  dataSaida integer check,
-  horaSaida integer check,
+  dataAdmissao text NOT NULL,
+  horaAdmissao text NOT NULL,
+  dataSaida text check,
+  horaSaida text check,
   sala text,
   tratamentosAdicionais text
 
 );
 
 --insert some values
-INSERT INTO Emergência (id, dataAdmissao, horaAdmissao, dataSaida, horaSaida, sala, tratamentosAdicionais ) VALUES (1, 24-12-2020, '23:00 PM', 25-12-2020, '10:00 AM', 'Urgencia', 'Paracetamol');
-INSERT INTO Emergência (id, dataAdmissao, horaAdmissao, dataSaida, horaSaida, sala, tratamentosAdicionais) VALUES (2, 26-12-2020, '12:30 AM', 26-12-2020, '20:00 PM','Urgencia', 'Cloroquina');
+INSERT INTO Emergencia (id, dataAdmissao, horaAdmissao, dataSaida, horaSaida, sala, tratamentosAdicionais ) VALUES (1, '24-12-2020', '23:00 PM', '25-12-2020', '10:00 AM', 'Urgencia', 'Paracetamol');
+INSERT INTO Emergencia (id, dataAdmissao, horaAdmissao, dataSaida, horaSaida, sala, tratamentosAdicionais) VALUES (2, '26-12-2020', '12:30 AM', '26-12-2020', '20:00 PM','Urgencia', 'Cloroquina');
 
