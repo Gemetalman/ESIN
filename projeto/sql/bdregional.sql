@@ -1,30 +1,28 @@
 PRAGMA foreign_keys = ON;
 -- delete the table
 -- create the table
-CREATE TABLE Utente(
-    id integer PRIMARY KEY autoincrement, 
-    dadosClinicos text NOT NULL, 
-    nome text NOT NULL default 'Unknown Name',
-    telefone TEXT, 
-    morada text
-);
+--CREATE TABLE Utente(
+    --id integer PRIMARY KEY autoincrement, 
+    --dadosClinicos text NOT NULL, 
+    --nome text NOT NULL default 'Unknown Name',
+    --telefone TEXT, 
+    --morada TEXT
+--);
 -- insert some values
-INSERT INTO Utente (id, nome, telefone, morada, dadosclinicos) VALUES (1, 'João', 932021523, Porto, dadosclinicos);
-
-
+--INSERT INTO Utente (id, nome, telefone, morada, dadosclinicos) VALUES (1,'João', 932021523,'Porto', 'dadosclinicos');
 
 -- delete the table
 --drop table if exist Hospital
---CREATE TABLE Hospital(
---id int PRIMARY KEY autoincrement,
---nome text NOT NULL,
---localidade text NOT NULL,
---email text UNIQUE,
---);
+CREATE TABLE Hospital(
+id int PRIMARY KEY autoincrement,
+nome text NOT NULL,
+localidade text NOT NULL,
+email text UNIQUE,
+);
 
 --insert some values
---INSERT INTO Hospital (id, nome, localidade, email) VALUES (1, 'Hospital1', Porto, Hospital1@gmail.com);
---INSERT INTO Hospital (id, nome, localidade, email) VALUES (2, 'Hospital2', Paranhos, Hospital2@gmail.com);
+INSERT INTO Hospital (id, nome, localidade, email) VALUES (1, 'Hospital1', 'Porto', 'Hospital1@gmail.com');
+INSERT INTO Hospital (id, nome, localidade, email) VALUES (2, 'Hospital2', 'Paranhos', 'Hospital2@gmail.com');
 --INSERT INTO Hospital (id, nome, localidade, email) VALUES (3, 'Hospital3', Matosinhos, Hospital3@gmail.com);
 --INSERT INTO Hospital (id, nome, localidade, email) VALUES (4, 'Hospital4', Vila nova de gaia, Hospital4@gmail.com);
 
