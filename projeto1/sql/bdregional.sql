@@ -1,4 +1,4 @@
-PRAGMA foreign_keys = ON;
+--PRAGMA foreign_keys = ON;
 -- delete the table
 --drop table if exist Utente;
 -- create the table
@@ -10,16 +10,16 @@ CREATE TABLE Utente (
     morada text
 );
 -- insert some values
---INSERT INTO Utente (id, dadosClinicos, nome, telefone, morada) VALUES (1, 'dadosclinicos', 'Joao', 932021523, 'Porto');
---INSERT INTO Utente (id, dadosClinicos, nome, telefone, morada) VALUES (2, 'dadosclinicos', 'Maria', 912034567, 'Paranhos');
---INSERT INTO Utente (id, dadosClinicos, nome, telefone, morada) VALUES (3, 'dadosClinicos', 'Mafalda', 982730912, 'Vila nova de gaia');
+INSERT INTO Utente (id, dadosClinicos, nome, telefone, morada) VALUES (1, 'dadosclinicos', 'Joao', 932021523, 'Porto');
+INSERT INTO Utente (id, dadosClinicos, nome, telefone, morada) VALUES (2, 'dadosclinicos', 'Maria', 912034567, 'Paranhos');
+INSERT INTO Utente (id, dadosClinicos, nome, telefone, morada) VALUES (3, 'dadosClinicos', 'Mafalda', 982730912, 'Vila nova de gaia');
 
 
 -- delete the table
 --drop table if exist Hospital
 CREATE TABLE Hospital(
 id integer PRIMARY KEY autoincrement,
-nome text NOT NULL,
+nome varchar(50) NOT NULL,
 localidade text NOT NULL,
 email text UNIQUE
 );
@@ -32,25 +32,25 @@ email text UNIQUE
 -- delete the table
 --drop table if exist Departamento
 CREATE TABLE Departamento(
-id int PRIMARY KEY,
-nome text NOT NULL NOT NULL,
-hospital  int references Hospital NOT NULL
+ id int primary key identity,
+  nome varchar(50) not null, 
+
 );
 
 
 --insert some values
---INSERT INTO Departamento (id, nome, hospital) VALUES (1, 'Departamentoadministrativo', 'HospitalA');
+INSERT INTO Departamento (id, nome) VALUES (1, 'Departamentoadministrativo');
 --INSERT INTO  Departamento (id, nome, hospital) VALUES (2,'Departamentoadministrativo', 'HospitalB');
 
 --delete the table
 --drop table if exist Medico
 CREATE TABLE Medico(
-id int PRIMARY KEY,
-nome text NOT NULL default 'Unknown Name',
-telefone integer, 
-horario text NOT NULL, 
-hospital int references Hospital,
-especialidade int references Especialidade
+id int primary key identity,
+  nome varchar(50) not null, 
+  horario varchar, 
+  telefone char (9) not null,
+  hospital varchar
+
 );
 
 --insert some values
@@ -60,21 +60,23 @@ especialidade int references Especialidade
 -- delete the table
 --drop table if exist Especialidade
 CREATE TABLE Especialidade(
-id integer PRIMARY KEY autoincrement, 
-nome text NOT NULL UNIQUE
+id int primary key identity,
+  nome varchar(50) not null
+
 );
 
 --insert some values
---INSERT INTO Especialidade (id, nome) VALUES (1, 'Dermatologia');
+INSERT INTO Departamento (id, nome) VALUES (1, 'Departamentoadministrativo');
 --INSERT INTO Especialidade (id, nome) VALUES (2, 'Oftamologia');
 
 -- delete the table
 --drop table if exist Consulta
 CREATE TABLE Consulta( 
 id int references Utente PRIMARY KEY,
-date text NOT NULL,
-hora text NOT NULL, 
-especialidade references Especialidade
+data date,
+hora integer NOT NULL, 
+especialidades varchar
+
 );
 
 --insert some values
@@ -85,9 +87,9 @@ especialidade references Especialidade
 -- delete the table
 --drop table if exist Consultorio
 CREATE TABLE Consultorio(
-  numero integer,
-  piso integer NOT NULL,
-  hospital references Hospital NOT NULL
+  numero int,
+  piso int NOT NULL,
+  id_hospital int references Hospital NOT NULL
 );
 
 --insert some values
@@ -98,13 +100,14 @@ CREATE TABLE Consultorio(
 -- delete the table
 --drop table if exist Emergência
 CREATE TABLE Emergencia(
-  id integer PRIMARY KEY autoincrement,
-  dataAdmissao text NOT NULL,
-  horaAdmissao text NOT NULL,
-  dataSaida text check,
-  horaSaida text check,
-  sala text,
-  tratamentosAdicionais text
+  id integer PRIMARY KEY identity,
+ dataAdmissao date NOT NULL,
+ horaAdmissao integer NOT NULL,
+ dataSaida date,
+ horaSaida datetime,
+ sala char,
+ tratamentosAdicionais varchar
+
 );
 
 --insert some values

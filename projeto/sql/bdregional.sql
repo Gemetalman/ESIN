@@ -32,15 +32,15 @@ INSERT INTO Hospital (id, nome, localidade, email) VALUES (2, 'Hospital2', 'Para
 
 -- delete the table
 --drop table if exist Departamento
---CREATE TABLE Departamento(
---id int PRIMARY KEY,
---nome text NOT NULL NOT NULL,
---hospital  int references Hospital NOT NULL
---);
+-CREATE TABLE Departamento(
+id int PRIMARY KEY ,
+nome text NOT NULL NOT NULL,
+hospital_id  int references Hospital(id) 
+);
 
 
 --insert some values
---INSERT INTO Departamento (id, nome, hospital) VALUES (1, 'Departamento administrativo', Hospital1);
+INSERT INTO Departamento (id, nome, hospital) VALUES (1, 'Departamento administrativo', HospitalA);
 --INSERT INTO  Departamento (id, nome, hospital) VALUES (2,'Departamento administrativo', Hospital2);
 --INSERT INTO  Departamento (id, nome, hospital) VALUES (3,'Departamento administrativo', Hospital3);
 --INSERT INTO  Departamento (id, nome, hospital) VALUES (4,'Departamento administrativo', Hospital4);
@@ -50,13 +50,13 @@ INSERT INTO Hospital (id, nome, localidade, email) VALUES (2, 'Hospital2', 'Para
 
 --delete the table
 --drop table if exist Medico
---CREATE TABLE Medico(
---id int PRIMARY KEY,
---nome text NOT NULL default 'Unknown Name',
---telefone TEXT, 
---horario text NOT NULL, 
---departamento int references Departamento,
---hospital int refererence);
+CREATE TABLE Medico(
+  id int primary key identity,
+  nome varchar(50) not null, 
+  horario varchar, 
+  telefone char (9) not null,
+  hospital varchar 
+);
 
 --insert some values
 --INSERT INTO  Medico (id, nome, telefone, horario, hospital) VALUES (1, 'Dr Antonio Jota', horario, Hospital4);
@@ -70,10 +70,10 @@ INSERT INTO Hospital (id, nome, localidade, email) VALUES (2, 'Hospital2', 'Para
 
 -- delete the table
 --drop table if exist Especialidade
---CREATE TABLE Especialidade(
-  --id integer PRIMARY KEY autoincrement, 
-  --nome text NOT NULL default 'Unknown Name',
---);
+CREATE TABLE Especialidade(
+  id int primary key identity,
+  nome varchar(50) not null
+);
 
 --insert some values
 --INSERT INTO Especialidade (id, nome) VALUES (1, 'Dermatologia');
