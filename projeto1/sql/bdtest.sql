@@ -1,13 +1,5 @@
 PRAGMA foreign_keys = ON;
--- delete the table
-drop table if exists utente;  
-drop table if exists medico;
-drop table if exists especialidade;
-drop table if exists hospital;
-drop table if exists emergencia;
-drop table if exists consulta;
-drop table if exists consultorio;
-drop table if exists departamento;
+
 
 -- create the table
 create table Utente(
@@ -58,8 +50,8 @@ especialidade_id integer references especialidade(id)
 );
 
 --insert some values
-INSERT INTO  Medico VALUES (1, 'Dr Antonio Jota', 92345678, 'horario', 'HospitalA', 'Dermatologia');
-INSERT INTO Medico VALUES (2, 'Dr Manuel Jorge', 98765456, 'horario', 'HospitalB', 'Oftamologia' );
+INSERT INTO  Medico VALUES (1, 'Dr Antonio Jota', 92345678, 'horario', 'HospitalA', 1);
+INSERT INTO Medico VALUES (2, 'Dr Manuel Jorge', 98765456, 'horario', 'HospitalB', 2);
 
 
 -- create the table
@@ -70,16 +62,16 @@ departamento_id integer references hospital(id)
 
 );
 --insert some values
-INSERT INTO Departamento VALUES (1, 'Departamentoadministrativo', 'HospitalA');
-INSERT INTO  Departamento VALUES (2, 'Departamentoadministrativo', 'HospitalB');
+INSERT INTO Departamento VALUES (1, 'Departamentoadministrativo', 1);
+INSERT INTO  Departamento VALUES (2, 'Departamentoadministrativo', 2);
 
 -- create the table
 create table Consulta(
-  id integer references Utente PRIMARY KEY,
+consultorio_id integer PRIMARY KEY,
 data date,
-hora integereger NOT NULL, 
+hora integer NOT NULL, 
 especialidades varchar,
-consulta_id integer references consultorio(id)  
+ references consultorio(id)  
 );
 
 --insert some values
@@ -100,8 +92,8 @@ id integer PRIMARY KEY autoincrement,
 );
 
 --insert some values
-INSERT INTO Emergencia VALUES (1, '24-12-2020', '23:00 PM', '25-12-2020', '10:00 AM', 'Urgencias', 'Paracetamol', 'HospitalA');
-INSERT INTO Emergencia VALUES (2, '26-12-2020', '12:30 AM', '26-12-2020', '20:00 PM','Urgencias', 'Cloroquina', 'HospitalB');
+INSERT INTO Emergencia VALUES (1, '24-12-2020', '23:00 PM', '25-12-2020', '10:00 AM', 'Urgencias', 'Paracetamol', 1);
+INSERT INTO Emergencia VALUES (2, '26-12-2020', '12:30 AM', '26-12-2020', '20:00 PM','Urgencias', 'Cloroquina', 2);
 
 -- create the table
 create table Consultorio(
@@ -111,7 +103,21 @@ hospital_id integer references hospital (id)
 );
 
 --insert some values
-INSERT INTO Consultorio VALUES (1, 3, 'HospitalB');
-INSERT INTO  Consultorio VALUES (2, 6, 'HospitalA');
+INSERT INTO Consultorio VALUES (1, 3, 1);
+INSERT INTO  Consultorio VALUES (2, 6, 2);
  
+
+ -- delete the table
+drop table if exists consulta;
+drop table if exists utente; 
+drop table if exists medico; 
+drop table if exists especialidade;
+drop table if exists emergencia;
+drop table if exists consultorio;
+drop table if exists departamento;
+drop table if exists hospital;
+
+
+
+
  
